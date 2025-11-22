@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es AJAX?</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+            background: #333;
+            color: #00ff9d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #00ff9d;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .example-box {
+            background: #fafafa;
+            padding: 15px;
+            border-left: 4px solid #0099ff;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>¿Qué es AJAX?</h1>
+
+    <div class="section">
+        <p>
+            AJAX (Asynchronous JavaScript and XML) es una técnica que permite que las aplicaciones web 
+            envíen y reciban datos del servidor sin recargar toda la página. 
+            Esto hace que las páginas sean más rápidas, interactivas y dinámicas.
+        </p>
+    </div>
+
+    <h2>Características de AJAX</h2>
+
+    <div class="section">
+        <ul>
+            <li><b>Asíncrono:</b> La página no se recarga, las solicitudes ocurren en segundo plano.</li>
+            <li><b>Interactividad:</b> Permite actualizar solo una parte de la página.</li>
+            <li><b>Compatible con varios formatos:</b> JSON, XML, HTML y texto plano.</li>
+            <li><b>Uso de tecnologías estándar:</b> HTML, CSS, JavaScript y XMLHttpRequest.</li>
+        </ul>
+    </div>
+
+    <h2>Usos de AJAX</h2>
+
+    <div class="section">
+        <ul>
+            <li>Actualizar contenido dinámicamente.</li>
+            <li>Validar formularios sin recargar la página.</li>
+            <li>Cargar datos en segundo plano.</li>
+            <li>Aplicaciones en tiempo real como chats o notificaciones.</li>
+        </ul>
+    </div>
+
+    <h2>Ejemplo de Funcionamiento de AJAX</h2>
+
+    <div class="example-box">
+        <p>A continuación, un ejemplo sencillo que carga datos desde un archivo usando AJAX:</p>
+    </div>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Ejemplo de AJAX&lt;/title&gt;
+    &lt;script&gt;
+        function loadData() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("data").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "data.txt", true);
+            xhr.send();
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Ejemplo de AJAX&lt;/h1&gt;
+    &lt;button type="button" onclick="loadData()"&gt;Cargar Datos&lt;/button&gt;
+    &lt;div id="data"&gt;Los datos se cargarán aquí...&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+    <h2>Archivo data.txt</h2>
+
+<pre><code>Estos son los datos cargados desde el servidor.</code></pre>
+
+    <h2>Descripción del Ejemplo</h2>
+
+    <div class="section">
+        <ul>
+            <li><b>HTML + JavaScript:</b> Contiene la función <code>loadData()</code> encargada de hacer la solicitud AJAX.</li>
+            <li><b>XMLHttpRequest:</b> Objeto usado para enviar la solicitud al servidor.</li>
+            <li><b>onreadystatechange:</b> Detecta cuando la respuesta está lista.</li>
+            <li><b>Botón:</b> Llama a la función y actualiza el contenido dinámicamente.</li>
+        </ul>
+    </div>
+
+    <h2>Ventajas de Usar AJAX</h2>
+
+    <div class="section">
+        <ul>
+            <li>Mejora la experiencia del usuario.</li>
+            <li>Evita recargar la página completa.</li>
+            <li>Permite crear aplicaciones web dinámicas y fluidas.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

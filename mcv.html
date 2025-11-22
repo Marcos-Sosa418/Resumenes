@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo MVC</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+            background: #333;
+            color: #00ff9d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #00ff9d;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .example-box {
+            background: #fafafa;
+            padding: 15px;
+            border-left: 4px solid #0099ff;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Modelo MVC</h1>
+
+    <div class="section">
+        <p>
+            El patrón de arquitectura Modelo-Vista-Controlador (MVC) divide una aplicación
+            en tres componentes principales: El <b>Modelo</b>, La <b>Vista</b> y El <b>Controlador</b>.
+            Su propósito es separar los datos, la lógica de negocio y la presentación visual,
+            haciendo la aplicación más organizada, reutilizable y fácil de mantener.
+        </p>
+    </div>
+
+    <h2>Historia</h2>
+
+    <div class="section">
+        <p>
+            MVC fue introducido por <b>Trygve Reenskaug</b> en los años 70 en Smalltalk-76 y evolucionado
+            en Smalltalk-80. Fue uno de los patrones pioneros en interfaces gráficas modernas
+            separando entrada, procesamiento y salida.
+            Hoy MVC tiene variantes como <b>HMVC</b>, <b>MVP</b>, <b>MVVM</b>, entre otros.
+        </p>
+    </div>
+
+    <h2>Descripción del Patrón</h2>
+
+    <div class="section">
+        <ul>
+            <li><b>Modelo:</b> Gestiona los datos y la lógica de negocio. Controla consultas, cambios y validaciones.</li>
+            <li><b>Controlador:</b> Recibe las acciones del usuario, actualiza el modelo y solicita actualizaciones en la vista.</li>
+            <li><b>Vista:</b> Presenta la información al usuario en formato visual (interfaz).</li>
+        </ul>
+    </div>
+
+    <h2>Ejemplo MVC en Python — Lista de Tareas</h2>
+
+    <div class="example-box">
+        <p>Ejemplo práctico usando una To-Do List para ilustrar cómo funciona el Modelo-Vista-Controlador.</p>
+    </div>
+
+    <h2>Modelo</h2>
+
+<pre><code>class TaskModel:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def remove_task(self, task):
+        if task in self.tasks:
+            self.tasks.remove(task)
+
+    def get_tasks(self):
+        return self.tasks
+</code></pre>
+
+    <h2>Vista</h2>
+
+<pre><code>class TaskView:
+    @staticmethod
+    def show_tasks(tasks):
+        print("To-Do List:")
+        for idx, task in enumerate(tasks, start=1):
+            print(f"{idx}. {task}")
+
+    @staticmethod
+    def show_message(message):
+        print(message)
+</code></pre>
+
+    <h2>Controlador</h2>
+
+<pre><code>class TaskController:
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
+
+    def add_task(self, task):
+        self.model.add_task(task)
+        self.view.show_message(f"Task '{task}' added.")
+        self.view.show_tasks(self.model.get_tasks())
+
+    def remove_task(self, task_number):
+        tasks = self.model.get_tasks()
+        if 0 < task_number <= len(tasks):
+            removed_task = tasks[task_number - 1]
+            self.model.remove_task(removed_task)
+            self.view.show_message(f"Task '{removed_task}' removed.")
+        else:
+            self.view.show_message("Invalid task number.")
+        self.view.show_tasks(tasks)
+</code></pre>
+
+    <h2>Uso del MVC</h2>
+
+<pre><code>if __name__ == "__main__":
+    model = TaskModel()
+    view = TaskView()
+    controller = TaskController(model, view)
+
+    controller.add_task("Learn Python")
+    controller.add_task("Write Unit Tests")
+    controller.add_task("Build a To-Do App")
+
+    controller.remove_task(2)
+</code></pre>
+
+    <h2>Funcionamiento</h2>
+
+    <div class="section">
+        <ul>
+            <li><b>Modelo:</b> TaskModel gestiona la lista de tareas.</li>
+            <li><b>Vista:</b> TaskView muestra tareas y mensajes.</li>
+            <li><b>Controlador:</b> TaskController coordina el flujo entre modelo y vista.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

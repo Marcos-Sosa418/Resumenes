@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Framework</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        pre {
+            background: #333;
+            color: #00ff9d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #00ff9d;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .example-box {
+            background: #fafafa;
+            padding: 15px;
+            border-left: 4px solid #0099ff;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Spring Framework</h1>
+
+    <div class="section">
+        <p>
+            El <b>Spring Framework</b> es uno de los frameworks más utilizados en el desarrollo
+            de aplicaciones empresariales con Java. Proporciona un conjunto de herramientas
+            que facilitan la creación de aplicaciones robustas, seguras, escalables y fáciles de mantener.
+        </p>
+    </div>
+
+    <h2>Características Principales</h2>
+
+    <div class="section">
+        <h3>Inversión de Control (IoC)</h3>
+        <p>
+            IoC permite que las dependencias de una clase sean administradas externamente,
+            en lugar de que la propia clase cree sus objetos. Esto promueve el desacoplamiento
+            y facilita las pruebas y el mantenimiento.
+        </p>
+
+        <h3>Inyección de Dependencias (DI)</h3>
+        <p>
+            Consiste en inyectar las dependencias necesarias en una clase automáticamente.
+            Spring actúa como contenedor que crea y gestiona los objetos del sistema,
+            reduciendo el acoplamiento entre clases.
+        </p>
+
+        <h3>Spring MVC</h3>
+        <p>
+            Framework basado en el patrón Modelo-Vista-Controlador. Permite crear aplicaciones
+            web estructuradas y organizadas separando la lógica de negocio, la vista y el controlador.
+        </p>
+
+        <h3>Spring Data</h3>
+        <p>
+            Simplifica la interacción con bases de datos. Abstrae la capa de acceso a datos
+            y soporta tecnologías como JPA, JDBC, MongoDB, Redis, entre otros.
+        </p>
+
+        <h3>Spring Security</h3>
+        <p>
+            Proporciona un sistema completo de seguridad para aplicaciones Java:
+            autenticación, autorización y protección contra ataques comunes (XSS, CSRF, etc.).
+        </p>
+
+        <h3>Spring Boot</h3>
+        <p>
+            Herramienta que permite crear aplicaciones Spring con mínima configuración.
+            Incluye servidor embebido, configuración automática y facilidad de despliegue.
+        </p>
+    </div>
+
+    <h2>Ejemplo: Spring Boot + Controlador Web</h2>
+
+    <div class="example-box">
+        <p>
+            A continuación, un pequeño ejemplo de una aplicación Spring Boot
+            con un controlador que devuelve un mensaje.
+        </p>
+    </div>
+
+    <h2>Clase Principal</h2>
+
+<pre><code>import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+}
+</code></pre>
+
+    <h2>Controlador (Controller)</h2>
+
+<pre><code>import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/hola")
+    public String hola() {
+        return "¡Hola desde Spring Boot!";
+    }
+}
+</code></pre>
+
+    <h2>Archivo application.properties</h2>
+
+<pre><code>server.port=8080
+spring.application.name=demo-app
+</code></pre>
+
+    <h2>¿Cómo funciona?</h2>
+
+    <div class="section">
+        <ul>
+            <li>La anotación <b>@SpringBootApplication</b> inicializa todo el proyecto Spring.</li>
+            <li>El controlador <b>@RestController</b> expone un endpoint web.</li>
+            <li><b>@GetMapping("/hola")</b> crea una ruta para acceder mediante navegador o Postman.</li>
+            <li>Spring Boot levanta un servidor interno (Tomcat) automáticamente.</li>
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+</html>

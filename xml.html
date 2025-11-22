@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Qué es XML? — Explicación y ejemplos</title>
+  <style>
+    :root{
+      --bg: #f7f9fb;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --accent: #8a2be2;
+      --mono: "Consolas", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      padding:20px;
+    }
+    .container{
+      max-width:980px;
+      margin:18px auto;
+      background:var(--card);
+      padding:26px;
+      border-radius:10px;
+      box-shadow:0 8px 24px rgba(25,35,50,0.07);
+    }
+    header h1{margin:0;font-size:26px}
+    header p{margin:6px 0 18px;color:var(--muted)}
+    nav{margin-bottom:18px}
+    nav a{
+      margin-right:12px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+    }
+    section{margin-bottom:18px;line-height:1.6}
+    h2{margin-top:12px;margin-bottom:8px;color:#4b0082}
+    h3{margin:10px 0 6px;color:#2d1745}
+    p{margin:8px 0;color:#2b2b44;text-align:justify}
+    ul{margin:8px 0 8px 20px}
+    .code-box{
+      background:#0f1720;
+      color:#e6f2ff;
+      padding:12px;
+      border-radius:8px;
+      font-family:var(--mono);
+      overflow:auto;
+      font-size:14px;
+      line-height:1.5;
+      margin:10px 0;
+    }
+    pre.pretty{
+      background:#f3f6f9;
+      padding:12px;
+      border-radius:6px;
+      font-family:var(--mono);
+      white-space:pre-wrap;
+      overflow:auto;
+    }
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:10px;border:1px solid #e6e9ee;text-align:left}
+    th{background:#f6f0fb}
+    footer{
+      font-size:13px;
+      color:var(--muted);
+      border-top:1px solid #eee;
+      padding-top:12px;
+      margin-top:18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>¿Qué es XML? - Explicación y ejemplos</h1><br>
+    </header>
+
+    <nav>
+      <a href="#definicion">Definición</a>
+      <a href="#caracteristicas">Características</a>
+      <a href="#estructura">Estructura</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#comparacion">Comparación</a>
+    </nav>
+
+    <section id="definicion">
+      <h2>¿Qué es XML?</h2>
+      <p>
+        XML es un lenguaje de marcado diseñado para almacenar datos y describir su estructura.
+        Es extensible, lo que significa que tú defines tus propias etiquetas. Fue creado para ser
+        legible tanto para humanos como para máquinas.
+      </p>
+    </section>
+
+    <section id="caracteristicas">
+      <h2>Características principales</h2>
+      <ul>
+        <li><strong>Extensible:</strong> Puedes crear tus propias etiquetas.</li>
+        <li><strong>Estructurado:</strong> Representa datos de forma jerárquica.</li>
+        <li><strong>Legible:</strong> Fácil de comprender por humanos.</li>
+        <li><strong>Interoperable:</strong> Compatible con muchos lenguajes y tecnologías.</li>
+        <li><strong>Basado en texto:</strong> Fácil de transportar y almacenar.</li>
+      </ul>
+    </section>
+
+    <section id="estructura">
+      <h2>Estructura básica de un documento XML</h2>
+
+      <h3>Elementos</h3>
+      <p>Las etiquetas envuelven el contenido:</p>
+      <pre class="pretty">
+<nombre>Juan</nombre>
+      </pre>
+
+      <h3>Atributos</h3>
+      <p>Describen propiedades dentro de una etiqueta:</p>
+      <pre class="pretty">
+<persona edad="30">Juan</persona>
+      </pre>
+
+      <h3>Documento XML completo</h3>
+      <pre class="pretty">
+<?xml version="1.0" encoding="UTF-8"?>
+<persona>
+  <nombre>Juan</nombre>
+  <edad>30</edad>
+  <direccion>
+    <ciudad>Santo Domingo</ciudad>
+    <pais>República Dominicana</pais>
+  </direccion>
+</persona>
+      </pre>
+    </section>
+
+    <section id="ejemplos">
+      <h2>Ejemplo grande: Menú en XML (con su equivalente JSON)</h2>
+
+      <h3>XML</h3>
+      <div class="code-box">
+&lt;menu id="file" value="File"&gt;<br>
+&nbsp;&nbsp;&lt;popup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="New" onclick="CreateNewDoc()" /&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="Open" onclick="OpenDoc()" /&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="Close" onclick="CloseDoc()" /&gt;<br>
+&nbsp;&nbsp;&lt;/popup&gt;<br>
+&lt;/menu&gt;
+      </div>
+
+      <h3>JSON equivalente</h3>
+      <pre class="pretty">
+{
+  "menu": {
+    "id": "file",
+    "value": "File",
+    "popup": {
+      "menuitems": [
+        { "value": "New", "onclick": "CreateNewDoc()" },
+        { "value": "Open", "onclick": "OpenDoc()" },
+        { "value": "Close", "onclick": "CloseDoc()" }
+      ]
+    }
+  }
+}
+      </pre>
+    </section>
+
+    <section id="comparacion">
+      <h2>Comparación XML vs JSON</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>XML</th>
+            <th>JSON</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sintaxis</td>
+            <td>Basada en etiquetas</td>
+            <td>Basada en objetos</td>
+          </tr>
+          <tr>
+            <td>Tamaño</td>
+            <td>Más verboso</td>
+            <td>Más compacto</td>
+          </tr>
+          <tr>
+            <td>Legibilidad</td>
+            <td>Buena</td>
+            <td>Muy buena</td>
+          </tr>
+          <tr>
+            <td>Uso común</td>
+            <td>Documentos, configuración, datos complejos</td>
+            <td>APIs, datos web, microservicios</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+</body>
+</html>

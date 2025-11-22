@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Qué es JSON? — Explicación y ejemplos</title>
+  <style>
+    :root{
+      --bg: #f7f9fb;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --accent: #0b66c3;
+      --mono: "Consolas", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      padding:20px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{
+      max-width:980px;
+      margin:18px auto;
+      background:var(--card);
+      padding:26px;
+      border-radius:10px;
+      box-shadow:0 8px 24px rgba(25,35,50,0.07);
+    }
+    header h1{margin:0;font-size:26px}
+    header p{margin:6px 0 18px;color:var(--muted)}
+    nav{margin-bottom:18px}
+    nav a{
+      margin-right:12px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+    }
+    section{margin-bottom:18px;line-height:1.6}
+    h2{margin-top:12px;margin-bottom:8px;color:#14375a}
+    h3{margin:10px 0 6px;color:#1e2f3f}
+    p{margin:8px 0;color:#2b3b44;text-align:justify}
+    ul{margin:8px 0 8px 20px}
+    .code-box{
+      background:#0f1720;
+      color:#e6f2ff;
+      padding:12px;
+      border-radius:8px;
+      font-family:var(--mono);
+      overflow:auto;
+      font-size:14px;
+      line-height:1.5;
+      margin:10px 0;
+    }
+    pre.json{background:#f3f6f9;padding:12px;border-radius:6px;font-family:var(--mono);white-space:pre-wrap;overflow:auto}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:10px;border:1px solid #e6e9ee;text-align:left}
+    th{background:#f6f8fb}
+    footer{font-size:13px;color:var(--muted);border-top:1px solid #eee;padding-top:12px;margin-top:18px}
+    @media (max-width:520px){.container{padding:14px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>¿Qué es JSON? — Explicación y ejemplos</h1><br>
+    </header>
+
+    <nav>
+      <a href="#definicion">Definición</a>
+      <a href="#ventajas">Ventajas</a>
+      <a href="#sintaxis">Sintaxis</a>
+      <a href="#procesamiento">Procesamiento</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#comparacion">Comparación</a>
+    </nav>
+
+    <section id="definicion">
+      <h2>¿Qué es JSON?</h2>
+      <p>
+        JSON (JavaScript Object Notation) es un formato de texto sencillo y ligero para el intercambio de datos.
+        Nació como una notación de objetos en JavaScript, pero actualmente es independiente del lenguaje.
+        Se usa ampliamente en APIs y aplicaciones web por su simplicidad y tamaño compacto.
+      </p>
+    </section>
+
+    <section id="ventajas">
+      <h2>Ventajas de JSON</h2>
+      <div class="grid">
+        <div>
+          <h3>Ligero</h3>
+          <p>Ocupa menos espacio que formatos verbosos como XML.</p>
+        </div>
+        <div>
+          <h3>Fácil de leer</h3>
+          <p>Su sintaxis es intuitiva y cercana a la de la mayoría de lenguajes.</p>
+        </div>
+        <div>
+          <h3>Amplio soporte</h3>
+          <p>Muchas bibliotecas y lenguajes ofrecen parseo/serialización nativo.</p>
+        </div>
+        <div>
+          <h3>Ideal para la web</h3>
+          <p>Se integra de forma natural con JavaScript y las APIs REST.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sintaxis">
+      <h2>Sintaxis: tipos de datos en JSON</h2>
+      <ul>
+        <li><strong>Números:</strong> enteros o decimales (ej.: <code>123.456</code>).</li>
+        <li><strong>Cadenas:</strong> entre comillas dobles (ej.: <code>"Hola"</code>).</li>
+        <li><strong>Booleanos:</strong> <code>true</code> o <code>false</code>.</li>
+        <li><strong>null:</strong> valor nulo (<code>null</code>).</li>
+        <li><strong>Array:</strong> lista ordenada entre corchetes (ej.: <code>["juan","pedro"]</code>).</li>
+        <li><strong>Objetos:</strong> pares <code>"clave": valor</code> entre llaves.</li>
+      </ul>
+
+      <h3>Ejemplo de objeto JSON</h3>
+      <pre class="json">
+{
+  "nombre": "Juan",
+  "edad": 30,
+  "activo": true,
+  "hobbies": ["leer", "viajar", "nadar"]
+}
+      </pre>
+    </section>
+
+    <section id="procesamiento">
+      <h2>Modelos de procesamiento y uso</h2>
+      <p>
+        JSON puede ser procesado con distintos modelos dependiendo del lenguaje:
+      </p>
+      <ul>
+        <li><strong>Modelo de objeto:</strong> carga todo en memoria como un árbol (útil para manipulación).</li>
+        <li><strong>Modelo de flujo:</strong> lectura/escritura por eventos (más eficiente para grandes volúmenes).</li>
+        <li><strong>Conversión:</strong> bibliotecas convierten JSON en objetos del lenguaje (ej.: Jackson, Gson).</li>
+      </ul>
+
+      <h3>Parseo en JavaScript (seguro)</h3>
+      <pre class="json">
+let texto = '{"nombre":"Miguel","edad":22}';
+let datos = JSON.parse(texto);
+console.log(datos.nombre); // "Miguel"
+      </pre>
+
+      <h3>Ejemplo clásico con XMLHttpRequest (histórico)</h3>
+      <pre class="json">
+var http = new XMLHttpRequest();
+http.onreadystatechange = function () {
+  if (http.readyState === 4 && http.status === 200) {
+    var datos = JSON.parse(http.responseText);
+    console.log(datos);
+  }
+};
+http.open("GET", "datos.json", true);
+http.send();
+      </pre>
+      <p style="font-size:13px;color:var(--muted)">Nota: hoy se suele usar <code>fetch()</code> o librerías (axios, etc.) en lugar de XMLHttpRequest.</p>
+    </section>
+
+    <section id="ejemplos">
+      <h2>Ejemplos comparativos: JSON y su equivalente XML</h2>
+
+      <h3>Ejemplo JSON (menú)</h3>
+      <pre class="json">
+{
+  "menu": {
+    "id": "file",
+    "value": "File",
+    "popup": {
+      "menuitems": [
+        { "value": "New", "onclick": "CreateNewDoc()" },
+        { "value": "Open", "onclick": "OpenDoc()" },
+        { "value": "Close", "onclick": "CloseDoc()" }
+      ]
+    }
+  }
+}
+      </pre>
+
+      <h3>XML equivalente</h3>
+      <div class="code-box">
+&lt;menu id="file" value="File"&gt;<br>
+&nbsp;&nbsp;&lt;popup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="New" onclick="CreateNewDoc()" /&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="Open" onclick="OpenDoc()" /&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;menuitem value="Close" onclick="CloseDoc()" /&gt;<br>
+&nbsp;&nbsp;&lt;/popup&gt;<br>
+&lt;/menu&gt;
+      </div>
+    </section>
+
+    <section id="comparacion">
+      <h2>Comparación JSON vs XML</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>JSON</th>
+            <th>XML</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tamaño</td>
+            <td>Más compacto</td>
+            <td>Más verboso</td>
+          </tr>
+          <tr>
+            <td>Legibilidad</td>
+            <td>Más fácil</td>
+            <td>Más estructurado</td>
+          </tr>
+          <tr>
+            <td>Soporte para esquemas</td>
+            <td>Sí (JSON Schema)</td>
+            <td>Sí (XSD)</td>
+          </tr>
+          <tr>
+            <td>Uso típico</td>
+            <td>APIs, web, microservicios</td>
+            <td>Documentos, configuraciones complejas</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+</body>
+</html>
